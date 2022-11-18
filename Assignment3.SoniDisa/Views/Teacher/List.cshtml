@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Assignment3.SoniDisa.Models.Teacher>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Teachers </h2>
+<p> This pages shows info about all teachers</p>
+
+<form action="/Teacher/List" method="get">
+
+    <input type="text" name="SearchKey" />
+    <input type="submit" value="Search" />
+</form>
+
+
+@foreach (var teacher in Model) { 
+
+   
+    <div><a href="/Teacher/Show/@teacher.TeacherId"><h3/>@teacher.TeacherFname @teacher.TeacherLname</a></div>
+    
+}
