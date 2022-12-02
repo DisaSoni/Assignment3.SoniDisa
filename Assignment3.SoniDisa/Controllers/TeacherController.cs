@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Assignment3.SoniDisa.Models;
+using System.Diagnostics;
 
 
 namespace Assignment3.SoniDisa.Controllers
@@ -59,8 +60,33 @@ namespace Assignment3.SoniDisa.Controllers
         }
 
         //POST: /Teacher/Create
-        public ActionResult Create()
+        public ActionResult Create(string TeacherFname, string TeacherLname, string EmployeeNumber, DateTime TeacherHireDate, decimal TeacherSalary)
         {
+
+            //Identify That this method is running
+            //Identify  the inputs provided from  to from.
+
+
+            Debug.WriteLine(" I have accessed the Create Method.!");
+
+            Debug.WriteLine(EmployeeNumber);
+            Debug.WriteLine(TeacherFname);
+            Debug.WriteLine(TeacherLname);
+            Debug.WriteLine(TeacherHireDate);
+            Debug.WriteLine(TeacherSalary);
+
+            Teacher NewTeacher = new Teacher();
+
+            NewTeacher.EmployeeNumber = EmployeeNumber;
+            NewTeacher.TeacherFname = TeacherFname;
+            NewTeacher.TeacherLname = TeacherLname;
+            NewTeacher.TeacherHireDate = TeacherHireDate;
+            NewTeacher.TeacherSalary = TeacherSalary;
+
+
+            TeacherDataController controller = new TeacherDataController();
+            controller.AddTeacher(NewTeacher);
+
             return RedirectToAction("List");
         }
     }

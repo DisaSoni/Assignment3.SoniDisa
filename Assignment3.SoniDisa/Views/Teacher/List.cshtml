@@ -3,19 +3,23 @@
     ViewBag.Title = "List";
 }
 
-<h2>List of Teachers </h2>
-<p> This pages shows info about all teachers</p>
+<div style="text-align: center; background-color:lightgrey;">
+    <a class="addink" href="/Teacher/New" style="color:blue"> Add Teacher</a>
+    <h2 style="color:darkcyan; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">List of Teachers </h2>
+    <p> This pages shows info about all teachers</p>
 
-<form action="/Teacher/List" method="get">
+    <form action="/Teacher/List" method="get">
 
-    <input type="text" name="SearchKey" />
-    <input type="submit" value="Search" />
-</form>
+        <input type="text" name="SearchKey" />
+        <input type="submit" value="Search" />
+    </form>
 
 
-@foreach (var teacher in Model) { 
+    @foreach (var teacher in Model)
+    {
 
-   
-    <div><a href="/Teacher/Show/@teacher.TeacherId"><h3/>@teacher.TeacherFname @teacher.TeacherLname</a></div>
-    
-}
+
+        <div><a href="/Teacher/Show/@teacher.TeacherId"><h3 />@teacher.TeacherFname @teacher.TeacherLname</a></div>
+
+    }
+</div>

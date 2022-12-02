@@ -161,9 +161,41 @@ namespace Assignment3.SoniDisa.Controllers
 
          
         }
-        ///<summary></summary>
-        ///<Return></Return>
-        ///
+        ///<summary>List Included new Teachers which we will add.</summary>
+        ///<Return> new authors full name, hiredate, employee number, salary.</Return>
+        ///<param name="NewTeacher">Teacher/New</param>
+        
+        [HttpPost]
+        public void AddTeacher(Teacher NewTeacher )
+        {
+            // create an instance of a connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+
+            //Connection open
+            Conn.Open();
+
+            //Command for our database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+
+            //sql query
+            cmd.CommandText = "Insert into teachers(teacherfname,teacherlname,employeenumber,hiredate,salary) values(@TeacherFname,@TeacherLname,@EmployeeNumber,@TeacherHireDate,@TeacherSalary)";
+            cmd.Parameters.AddWithValue("@EmployeeNumber",NewTeacher.EmployeeNumber);
+            cmd.Parameters.AddWithValue("@TeacherFname", NewTeacher.TeacherFname);
+            cmd.Parameters.AddWithValue("@TeacherLname", NewTeacher.TeacherLname);
+            cmd.Parameters.AddWithValue("@TeacherHireDate", NewTeacher.TeacherHireDate);
+            cmd.Parameters.AddWithValue("@TeacherSalary", NewTeacher.TeacherSalary);
+
+
+
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+
+        }
     }
     }
 
