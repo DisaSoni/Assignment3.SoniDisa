@@ -14,7 +14,7 @@ namespace Assignment3.SoniDisa.Models
         public string TeacherLname;
         public DateTime TeacherHireDate;
         public decimal TeacherSalary;
-
+        
         public string EmployeeNumber { get; internal set; }
     }
 }

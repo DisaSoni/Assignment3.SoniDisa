@@ -22,6 +22,7 @@ namespace Assignment3.SoniDisa.Controllers
 
         ///<summeryReturn a list of teacher with search keyword></summery>
         ///<example> get/Teacher/List?SearchKey=id</example>
+        
         ///<returns> searched teacher names and id</returns>
         [HttpGet]
         [Route("api/TeacherData/ListTeachers/{SearchKey?}")]
@@ -130,7 +131,39 @@ namespace Assignment3.SoniDisa.Controllers
             return NewTeacher;
         }
 
-        
+        ///<summary> Delete data from in list</summary>
+        ///<param name="id"></param>
+        ///<return> Data delete from list when click confirm button</return>
+        ///<example>POST: /api/TeacherData/DeleteTeacher/3</example>
+        [HttpPost]
+        public void DeleteTeacher(int id)
+        {
+
+            // create an instance of a connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+
+            //Connection open
+            Conn.Open();
+
+            //Command for our database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+
+            //sql query
+            cmd.CommandText = "Delete from Teachers where teacherid=@id";
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+
+         
+        }
+        ///<summary></summary>
+        ///<Return></Return>
+        ///
     }
     }
 

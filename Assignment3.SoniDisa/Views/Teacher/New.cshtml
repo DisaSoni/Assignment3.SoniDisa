@@ -1,0 +1,38 @@
+﻿@model Assignment3.SoniDisa.Models.Teacher
+@{
+    ViewBag.Title = "New";
+}
+<div style="background-color:lightblue;">
+    <h2 style="text-align:center;"> New Teacher</h2>
+
+
+    <form method="POST" action="/Teacher/Create">
+
+        <div>
+            <label for="EmployeeNumber">Employee No:</label>
+            <input type="text" id="EmployeeNumber" name="EmployeeNumber" />
+        </div>
+        <div>
+            <label for="TeacherFname">First Name:</label>
+            <input type="text" id="TeacherFname" name="TeacherFname" />
+        </div>
+        <div>
+            <label for="TeacherLname">Last Name:</label>
+            <input type="text" id="TeacherLname" name="TeacheLFname" />
+        </div>
+
+        <div>
+            <label for="TeacherHireDate">HireDate:</label>
+            <input type="Date" id="TeacherHireDate" name="TeacherHireDate" />
+        </div>
+        <div>
+            <label for="TeacherSalary">Salary:</label>
+            <input type="text" id="TeacherSalary" name="TeacherSalary" />
+        </div>
+        <div>
+            <input type="submit" value="Add Teacher" />
+        </div>
+    </form>
+
+</div>
+
