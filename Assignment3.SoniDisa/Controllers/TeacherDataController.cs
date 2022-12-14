@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Web.Http;
 using MySql.Data.MySqlClient;
 using Assignment3.SoniDisa.Models;
-
+using System.Diagnostics;
 
 namespace Assignment3.SoniDisa.Controllers
 {
@@ -166,11 +166,12 @@ namespace Assignment3.SoniDisa.Controllers
         ///<param name="NewTeacher">Teacher/New</param>
         
         [HttpPost]
-        public void AddTeacher(Teacher NewTeacher )
+        public void AddTeacher([FromBody]Teacher NewTeacher )
         {
             // create an instance of a connection
             MySqlConnection Conn = School.AccessDatabase();
 
+            Debug.WriteLine(NewTeacher.TeacherFname);
 
             //Connection open
             Conn.Open();
@@ -196,6 +197,40 @@ namespace Assignment3.SoniDisa.Controllers
             Conn.Close();
 
         }
+
+
+        public void UpdateTeacher(int id,[FromBody] Teacher TeacherInfo)
+        {
+            // create an instance of a connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+           Debug.WriteLine(TeacherInfo.TeacherFname);
+
+            //Connection open
+            Conn.Open();
+
+            //Command for our database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+
+            //sql query
+            cmd.CommandText = "update teachers set teacherfname=@TeacherFname, teacherlname=@TeacherLname, employeenumber=@EmployeeNumber,  salary=@TeacherSalary  where teacherid=@TeacherId";
+            cmd.Parameters.AddWithValue("@EmployeeNumber", TeacherInfo.EmployeeNumber);
+            cmd.Parameters.AddWithValue("@TeacherFname", TeacherInfo.TeacherFname);
+            cmd.Parameters.AddWithValue("@TeacherLname", TeacherInfo.TeacherLname);
+            cmd.Parameters.AddWithValue("@TeacherHireDate", TeacherInfo.TeacherHireDate);
+            cmd.Parameters.AddWithValue("@TeacherSalary", TeacherInfo.TeacherSalary);
+            cmd.Parameters.AddWithValue("@TeacherId", id);
+
+
+            cmd.Prepare();                            
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+        }
+
+
     }
-    }
+}
 

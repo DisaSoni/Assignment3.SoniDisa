@@ -4,13 +4,14 @@
 }
 
 <div style="background-color:lightcyan">
-<a class="navlink" href="/Teacher/List" style="float:left; margin:20px;"> Back to Teachers</a>
-<a class="navlink" style="float:right; margin:20px;" href="/Teacher/DeleteConfirm/@Model.TeacherId" > Delete</a>
-    
+    <a class="navlink" href="/Teacher/List" style="float:left; margin:20px;"> Back to Teachers</a>
+    <a class="navlink" style="float:right; margin:20px;" href="/Teacher/DeleteConfirm/@Model.TeacherId"> Delete</a>
+    <a class="navlink" style="float:right; margin:20px;" href="/Teacher/Update/@Model.TeacherId"> Update</a>
 
-<h2 style="font-size:300%;text-align:center;"> <u>Show Teacher </u></h2>
- <h3 style="color:darkslateblue; text-align:center;"> @Model.TeacherId . @Model.TeacherFname @Model.TeacherLname </h3>
-  <h4 style="font-style: italic; text-align:center;"> <b>Employee Number:</b> @Model.EmployeeNumber <b>HireDate:</b> @Model.TeacherHireDate <b>Salary:$</b>  @Model.TeacherSalary  </h4>
+
+    <h2 style="font-size:300%;text-align:center;"> <u>Show Teacher </u></h2>
+    <h3 style="color:darkslateblue; text-align:center;"> @Model.TeacherId . @Model.TeacherFname @Model.TeacherLname </h3>
+    <h4 style="font-style: italic; text-align:center;"> <b>Employee Number:</b> @Model.EmployeeNumber <b>HireDate:</b> @Model.TeacherHireDate <b>Salary:$</b>  @Model.TeacherSalary  </h4>
 </div>
 
 
