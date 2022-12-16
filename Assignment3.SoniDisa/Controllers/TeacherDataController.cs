@@ -197,7 +197,11 @@ namespace Assignment3.SoniDisa.Controllers
             Conn.Close();
 
         }
-
+        /// <summary>
+        /// Updates a Teacher on the MySQL Database.
+        /// </summary>
+        /// <param name="id">Identifies teacher to update</param>
+        /// <param name="TeacherInfo">Object which maps to the columns of the teachers table</param>
 
         public void UpdateTeacher(int id,[FromBody] Teacher TeacherInfo)
         {
@@ -214,7 +218,7 @@ namespace Assignment3.SoniDisa.Controllers
 
 
             //sql query
-            cmd.CommandText = "update teachers set teacherfname=@TeacherFname, teacherlname=@TeacherLname, employeenumber=@EmployeeNumber,  salary=@TeacherSalary  where teacherid=@TeacherId";
+            cmd.CommandText = "update teachers set teacherfname=@TeacherFname, teacherlname=@TeacherLname, employeenumber=@EmployeeNumber, hiredate=@TeacherHireDate,  salary=@TeacherSalary  where teacherid=@TeacherId";
             cmd.Parameters.AddWithValue("@EmployeeNumber", TeacherInfo.EmployeeNumber);
             cmd.Parameters.AddWithValue("@TeacherFname", TeacherInfo.TeacherFname);
             cmd.Parameters.AddWithValue("@TeacherLname", TeacherInfo.TeacherLname);

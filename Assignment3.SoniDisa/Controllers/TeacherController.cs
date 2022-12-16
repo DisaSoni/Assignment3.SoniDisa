@@ -103,6 +103,8 @@ namespace Assignment3.SoniDisa.Controllers
 
             return View(SelectedTeacher);
         }
+
+
         /// <summary>
         /// Recieves a POST request with information about an existing teacher, with new values.Conveys this information to the API and redirects to the "Show" page of an updated teacher.
         /// </summary>
@@ -110,6 +112,7 @@ namespace Assignment3.SoniDisa.Controllers
         ///<param name = "TeacherFname" > The updated first name</param>
         /// <param name="TeacherLname">The updated last name</param>
         /// <param name="TeacherSalary"> The updated teacher salary</param>
+        /// <param name="TeacherHireDate">The Update Hiredate</param>
         /// <param name="EmployeeNumber">The updated Employee number</param>
         /// <returns>A dynamic web page with teachers' current information </returns>
         ///<example>
@@ -123,7 +126,10 @@ namespace Assignment3.SoniDisa.Controllers
         /// "TeacherSalary":"50.55$"
         /// }
         /// </example>
+        
+        // POST: /Teacher/Update/{id}
         [HttpPost]
+      
         public ActionResult Update(int id, string TeacherFname, string TeacherLname, string EmployeeNumber, DateTime TeacherHireDate, decimal TeacherSalary)
         {
             Teacher TeacherInfo = new Teacher();
